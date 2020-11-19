@@ -12,6 +12,10 @@
         </div>
       </li>
     </ul>
+    <div v-if="choosenTicket">
+      <Ticket :ticket="choosenTicket" />
+    </div>
+    <NuxtLink to="/">Retourner à l'accueil</NuxtLink>
   </div>
 </template>
 
@@ -22,6 +26,11 @@ export default {
   async asyncData({ store, route }) {
     await store.dispatch('loadTickets', route.query.code)
   },
+  data() {
+    return {
+      choosenTicket: null,
+    }
+  },
   computed: {
     ...mapGetters({
       tickets: 'getTickets',
@@ -29,7 +38,7 @@ export default {
   },
   methods: {
     onTicketChoice(ticket) {
-      /** @TODO Implement method */
+      this.choosenTicket = ticket
     },
   },
 }
