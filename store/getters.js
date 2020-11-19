@@ -5,4 +5,7 @@ export default {
   getDreamDestinations({ destinations }) {
     return destinations.filter((d) => d.isDreamDestination)
   },
+  getTickets({ tickets }) {
+    return tickets
+  },
 }
